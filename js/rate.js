@@ -705,7 +705,7 @@ function loginFb(){
 					preview = String(defaultstr).replace(/<brand>/g,customArray.businessName).replace(/<rating>/,aveRated.toFixed(1)).replace(/<max_rating>/,'5').replace(/<tabluu_url>/,'http://www.tabluu.com/'+customArray.nicename+'.html').replace(/<address>/,address).replace(/<tel>/,customArray.contactNo).replace(/<comment>/,ratecomment);
 					//preview = 'I rate '+customArray.businessName+' '+aveRated.toFixed(1)+' out of 5. '+	  ratecomment+' Go to: http://www.tabluu.com/'+nicename+'.html - Addr: '+ address +'. Tel: '+customArray.contactNo+'.';
 				}
-				var location = 'http://www.tabluu.com/app/';
+				var location = 'http://www.tabluu.com/staging/';
 				if(isphototakedone < 0 && takeaphoto > 0){ // take the camera? && check if the photo temporary done uploaded
 					setTimeout(function() {
 						username = response.name;
@@ -1119,8 +1119,8 @@ $(document).on('pageinit','#rateone', function() {
 				alertErrorPage('setup incomplete','Go to Setup > Your Tabluu (Business) Page');
 			else if(customArray.city == '')	
 				alertErrorPage('setup incomplete','Go to Setup > Your Tabluu (Business) Page ');
-			//else if(j < 2)
-			//	alertErrorPage('setup incomplete','Go to Setup > Business Web Page > Photos ');
+			else if($.trim(customArray.fbImg) == '' && customArray.optsocialpost < 1)
+				alertErrorPage('setup incomplete','Go to Setup > Customers\' Social Media Posts > What to Post to Social Media? ');
 			else if(customArray.subscribe < 1)
 				alertErrorPage('this location is offline','Please change the status to online');
 			else if(customArray.settingsItem < 1)

@@ -194,7 +194,7 @@ $(document).ready(function(){
 						j++;
 					if(customArray.city == '')	
 						alertBox('setup incomplete','Go to Setup > Your Tabluu (Business) Page ');
-					else if(customArray.fbImg == '')
+					else if(customArray.fbImg == '' && customArray.optsocialpost < 1)
 						alertBox('setup incomplete','Go to Setup > Customers\' Social Media Posts > Default Image for Facebook Posts ');
 					else if(j < 2)
 						alertBox('setup incomplete','Go to Setup > Your Tabluu (Business) Page ');						
@@ -237,8 +237,8 @@ $(document).ready(function(){
 						j++;
 					if(customArray.city == '')	
 						alertBox('setup incomplete','Go to Setup > Your Tabluu (Business) Page ');
-					else if(customArray.fbImg == '')
-						alertBox('setup incomplete','Go to Setup > Customers\' Social Media Posts > Default Image for Facebook Posts ');
+					else if($.trim(customArray.fbImg) == '' && customArray.optsocialpost < 1)
+						alertBox('setup incomplete','Go to Setup > Customers\' Social Media Posts > What to Post to Social Media? ');
 					else if(j < 2)
 						alertBox('setup incomplete','Go to Setup > Your Tabluu (Business) Page ');						
 					else if(customArray.nicename == "")
@@ -5783,7 +5783,10 @@ $(document).on('pageshow','#fbpost', function () {
 		if(customArray.fbImg != ''){
 			$('#fbthumb').attr('src', customArray.fbImg);
 			$('#frmfb').css({display:'none'});	
-		}
+		}else{
+			$('#fbthumb').attr('src', 'images/template/no-photo.gif');
+			$('#frmfb').css({display:'inline'});
+		}	
 		
 		$("#fbthumb").click(function (){
 			if(customArray.fbImg != ''){

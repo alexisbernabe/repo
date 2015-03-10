@@ -27,7 +27,7 @@ switch($opt){
 			 $defaultLogo ='';
 			 mysql_query("INSERT INTO businessCustom SET customPlaceId = $lastId, logo = '$defaultLogo',backgroundcolor = '#DBEBF1',backgroundFont = '#3b3a26'");
 			// mysql_query("INSERT INTO businessImages SET placeId = $lastId,name`fbImg` =  'images/desktop_default.png',`webImg` =  'images/desktop_default.png',`webImg2` =  'images/desktop_default.png'");
-			 mysql_query("INSERT INTO businessImages (placeId,path,title,description,name) VALUES($lastId,'images/desktop_default.png','','','fbImg'),($lastId,'images/default-image.png','','','webImg'),($lastId,'images/default-image.png','','','webImg2'),($lastId,'images/default-image.png','','','webImg3'),($lastId,'images/default-image.png','','','webImg4'),($lastId,'images/default-image.png','','','webImg5'),($lastId,'','','','webImg6'),($lastId,'','','','webImg7'),($lastId,'','','','webImg8')");
+			 mysql_query("INSERT INTO businessImages (placeId,path,title,description,name) VALUES($lastId,'','','','fbImg'),($lastId,'images/default-image.png','','','webImg'),($lastId,'images/default-image.png','','','webImg2'),($lastId,'images/default-image.png','','','webImg3'),($lastId,'images/default-image.png','','','webImg4'),($lastId,'images/default-image.png','','','webImg5'),($lastId,'','','','webImg6'),($lastId,'','','','webImg7'),($lastId,'','','','webImg8')");
 			 mysql_query("INSERT INTO businessOpeningHours SET openingPlaceId = $lastId");
 			 mysql_query("INSERT INTO businessDescription SET descPlaceId = $lastId");
 		     echo $lastId;

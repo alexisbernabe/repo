@@ -657,7 +657,7 @@ switch($opt){
 		$feedarray = array();
 		if($hadtable){
 			if($case == 0){
-				$sql = "SELECT * FROM businessplace_$placeId WHERE source = 'fb' AND photo_url <> '' ORDER BY date DESC LIMIT $start,$offset";
+				$sql = "SELECT * FROM businessplace_$placeId WHERE source = 'fb' ORDER BY date DESC LIMIT $start,$offset";
 			}if($case == 1)
 				$sql = "SELECT * FROM businessplace_$placeId WHERE source <> 'fb' ORDER BY date DESC LIMIT $start,$offset";
 			if($case == 2){
@@ -750,7 +750,7 @@ switch($opt){
 			$addfeafield = mysql_query("SHOW COLUMNS FROM `businessplace_$placeId` LIKE 'feature'") or die(mysql_error());
 			if(mysql_num_rows($addfeafield) < 1) 
 				mysql_query("ALTER TABLE `businessplace_$placeId` ADD `feature` TINYINT NOT NULL") or die(mysql_error());
-			$sql = "SELECT * FROM businessplace_$placeId WHERE source = 'fb' AND photo_url <> '' ORDER BY feature DESC,date DESC LIMIT $start,$offset";
+			$sql = "SELECT * FROM businessplace_$placeId WHERE source = 'fb' ORDER BY feature DESC,date DESC LIMIT $start,$offset";
 			$result =  mysql_query($sql);
 			if(mysql_num_rows($result)){
 				$i=0;

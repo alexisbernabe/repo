@@ -169,7 +169,7 @@ p{margin-top:0.5em;}
 #login .ui-table-reflow.ui-responsive td, .ui-table-reflow.ui-responsive th{clear:both;-moz-box-sizing: border-box;clear: left;width: 50%;float:none;}
 #login .ui-footer {background-color: #00AEEF !important;}
 #login .btn-submit .ui-btn{background-color:#00AEEF;text-shadow:none;color:#fff;font-weight: normal;}
-#frmlogo .ui-btn,#frmbackground .ui-btn{background-color:#00AEEF;color: #fff;}
+#frmlogo .ui-btn,#frmbackground .ui-btn,#frmfb .ui-btn{background-color:#00AEEF;color: #fff;}
 #sign {background-color:#D9D9D9;}
 #sign .content-wrap{background:#EFF0F1;}
 #sign .contentwrap{width:100%;max-width:21.25em;margin:0 auto;height:100%;min-height:18.75em;text-align:center;}
