@@ -1,0 +1,79 @@
+/**
+ * Default Look and Feel
+ */
+.alertify,
+.alertify-log {
+	font-family: sans-serif;
+}
+.alertify-dialog{padding:0px;}
+.alertify-buttons{
+	background-color:#F7F7F7;
+	min-height:40px;
+	-webkit-border-radius:  0 0 10px 10px !important;-moz-border-radius:  0 0 10px 10px !important;border-radius: 0 0 10px 10px !important;
+	padding: 10px 13px 10px 10px;
+}
+.alertify p{font-size:0.8em;color:#fff;}
+.alertify {
+	background: #FFF;
+	-webkit-border-radius: 12px;-moz-border-radius: 12px;border-radius: 12px;
+}
+	.alertify-text {
+		border: 1px solid #CCC;
+		padding: 10px;
+		border-radius: 4px;
+	}
+	.alertify-button {
+		border-radius: 4px;
+		color: #000;
+		font-size:0.7em;
+		padding: 4px 10px;
+		border: 1px solid #ccc;
+		text-decoration: none;
+	}
+	.alertify-button:hover,
+	.alertify-button:focus {
+		outline: none;
+        border: 1px solid #ccc;
+		font-size:0.7em;
+	}
+	.alertify-button:focus {
+		font-size:0.7em;
+		border: 1px solid #ccc;
+	}
+	.alertify-button:active {
+		position: relative;
+       font-size:0.7em;
+	}
+		.alertify-button-cancel,
+		.alertify-button-cancel:hover,
+		.alertify-button-cancel:focus {
+			font-size:0.7em;
+			border: 1px solid #ccc;
+			margin-top:5px;
+			min-width: 70px;
+		}
+		.alertify-button-ok,
+		.alertify-button-ok:hover,
+		.alertify-button-ok:focus {
+			border: 1px solid #ccc;
+			font-size:0.7em;
+			margin-top:5px;
+			min-width: 70px;
+		}
+
+.alertify-log {
+	background: #1F1F1F;
+	background: rgba(0,0,0,.9);
+	padding: 15px;
+	border-radius: 4px;
+	color: #FFF;
+	text-shadow: -1px -1px 0 rgba(0,0,0,.5);
+}
+	.alertify-log-error {
+		background: #FE1A00;
+		background: rgba(254,26,0,.9);
+	}
+	.alertify-log-success {
+		background: #5CB811;
+		background: rgba(92,184,17,.9);
+	}
