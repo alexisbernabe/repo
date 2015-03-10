@@ -28,7 +28,7 @@
 								<li><a href="#" class="ui-btn ui-btn-icon-right ui-icon-carat-r ui-btn-active">Your Tabluu (Business) Page<span class="listview-arrow-default listview-arrow-active"></span></a></li>
 								<li><a href="#">Customize Feedback / Review Page<span class="listview-arrow-default"></span></a></li>
 								<li><a href="#">What Question(s) to Ask?<span class="listview-arrow-default"></span></a></li>
-								<li><a href="#">Customers’ Facebook Posts<span class="listview-arrow-default"></span></a></li>
+								<li><a href="#">Customers’ Social Media Posts<span class="listview-arrow-default"></span></a></li>
 								<li><a href="#">Poor Feedback Alerts<span class="listview-arrow-default"></span></a></li>
 								<!--<li><a href="#">Post to Social Networks<span class="listview-arrow-default"></span></a></li>-->
 							</ul>							
@@ -43,8 +43,8 @@
 							</section>
 							<section class="panel-postFB hide">
 								<ul class="right-menu" data-role="listview">
-								<li><a href="fbpost.html" data-prefetch="true">What to post to social media?<span class="listview-arrow-default"></span></a></li>
-								<li ><a href="fbpost.html" data-prefetch="true">Post Reviews to Facebook &amp; Tabluu?<span class="listview-arrow-default"></span></a></li>
+								<li><a href="fbpost.html" data-prefetch="true">What to Post to Social Media?<span class="listview-arrow-default"></span></a></li>
+								<li ><a href="fbpost.html" data-prefetch="true">Post Reviews to Social Media &amp; Tabluu?<span class="listview-arrow-default"></span></a></li>
 								<li ><a href="fbpost.html" data-prefetch="true">Customize Message<span class="listview-arrow-default"></span></a></li>
 								</ul>
 							</section>

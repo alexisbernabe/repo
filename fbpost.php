@@ -21,8 +21,8 @@
 						<div class="left-content fl">
 							<div class="left-header">Customers’ Facebook Posts</div>			
 							<ul class="fbpost-left-menu" data-role="listview">
-								<li><a href="#">What to post to social media?<span class="listview-arrow-default"></span></a></li>
-								<li><a href="#">Post Reviews to Facebook &amp; Tabluu?<span class="listview-arrow-default"></span></a></li>
+								<li><a href="#">What to Post to Social Media?<span class="listview-arrow-default"></span></a></li>
+								<li><a href="#">Post Reviews to Social Media &amp; Tabluu?<span class="listview-arrow-default"></span></a></li>
 								<li><a href="#">Customize Message<span class="listview-arrow-default"></span></a></li>
 							</ul>								
 						</div>
@@ -68,7 +68,7 @@
 							</section>
 							
 							<section class="panel-post hide">
-								<p>Allow reviews &amp; photos to be posted to Facebook &amp; Tabluu</p>
+								<p>Allow reviews &amp; photos to be posted to Social Media &amp; Tabluu</p>
 								<div class="clear" style="padding-top:0.5em"></div>	
 								<fieldset data-role="controlgroup" data-corners="false" id="sharefb">
 									<input type="radio" name="radio-a" id="radio-a" value="0" >
@@ -77,7 +77,7 @@
 									<label for="radio-b">yes</label>
 								</fieldset>
 								<div class="clear" style="padding-top:0.5em"></div>	
-								<p>Minimum average rating before customers can post to Facebook &amp; Tabluu</p>
+								<p>Minimum average rating before customers can post to Social Media &amp; Tabluu</p>
 								<div class="clear" style="padding-top:0.5em"></div>	
 								<fieldset data-role="controlgroup" data-corners="false" id="sharelimit">
 									<input type="radio" name="post" id="onea" value="1.0" >
