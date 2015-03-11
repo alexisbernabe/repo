@@ -92,7 +92,7 @@
 								<div class="clear" style="padding-top:0.5em"></div>	
 								<div class="QRFrame">
 								  <p class="title title-2" style="color:#000">We Value Your Feedback</p>
-								  <div class="QRimage"></div>
+								  <div class="QRimage2"></div>
 								  <p class="shortlink">tabluu.com/hop8e5t=0</p>
 								  <div class="qrframelogo"></div>  
 								</div>

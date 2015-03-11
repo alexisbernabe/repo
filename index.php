@@ -103,7 +103,7 @@ echo date_default_timezone_get();*/
 							<section class="right-menu-help hide">
 								<ul class="right-menu" data-role="listview">
 									<!--<li><a href="http://www.tabluu.com/blog/getting-started-with-tabluu" target="_blank">Remove getting started<span class="listview-arrow-default"></span></a></li>-->
-									<li ><a href="http://www.tabluu.com/blog/how-do-i-setup-tabluu-2"  target="_blank">Setting Up Tabluu<span class="listview-arrow-default"></span></a></li><li ><a href="http://www.tabluu.com/blog/some-examples-to-get-you-started" target="_blank">Examples<span class="listview-arrow-default"></span></a></li>					
+									<li ><a href="http://www.tabluu.com/blog/tabluu-general/how-do-i-setup-tabluu-2" target="_blank">Setting Up Tabluu<span class="listview-arrow-default"></span></a></li><li ><a href="http://www.tabluu.com/blog/tabluu-general/some-examples-to-get-you-started" target="_blank">Examples<span class="listview-arrow-default"></span></a></li>					
 								</ul>
 							</section>
 							<section class="right-menu-admin hide">

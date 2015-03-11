@@ -105,17 +105,17 @@ switch($_REQUEST['opt']){
 					$b++;
 				}
 			}
-			$timezone =='';
+			$timezone ='';
 			if($hadTable){
 				$timezone = mysql_fetch_object(mysql_query("SELECT u.timezone FROM businessList as l LEFT JOIN businessUserGroup AS u ON u.gId = l.userGroupId WHERE l.id = $placeId LIMIT 1"));
 				$timezone = $timezone->timezone;
-				$addhidefield = mysql_query("SHOW COLUMNS FROM `businessplace_$placeId` LIKE 'hideimg'") or die(mysql_error());
+				$addhidefield = mysql_query("SHOW COLUMNS FROM `businessplace_$placeId` LIKE 'hideimg'");
 				if(mysql_num_rows($addhidefield) < 1)
-					mysql_query("ALTER TABLE `businessplace_$placeId` ADD `hideimg` TINYINT NOT NULL") or die(mysql_error());
-				$addfeafield = mysql_query("SHOW COLUMNS FROM `businessplace_$placeId` LIKE 'feature'") or die(mysql_error());
+					mysql_query("ALTER TABLE `businessplace_$placeId` ADD `hideimg` TINYINT NOT NULL");
+				$addfeafield = mysql_query("SHOW COLUMNS FROM `businessplace_$placeId` LIKE 'feature'");
 				if(mysql_num_rows($addfeafield) < 1) 
-					mysql_query("ALTER TABLE `businessplace_$placeId` ADD `feature` TINYINT NOT NULL") or die(mysql_error());
-				$resultFeature =  mysql_query("SELECT * FROM businessplace_$placeId WHERE feature = 1 AND source = 'fb' ORDER BY date DESC LIMIT 4") or die(mysql_error());
+					mysql_query("ALTER TABLE `businessplace_$placeId` ADD `feature` TINYINT NOT NULL");
+				$resultFeature =  mysql_query("SELECT * FROM businessplace_$placeId WHERE feature = 1 AND source = 'fb' ORDER BY date DESC LIMIT 4");
 				if(mysql_num_rows($resultFeature))
 					$result = $resultFeature;
 				else{

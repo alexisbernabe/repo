@@ -1,8 +1,13 @@
 <?php
+if (strstr($_SERVER['REQUEST_URI'], 'app'))
+	$folde = '/app/';
+else
+	$folde = '/staging/';
+	
 $cookiedomain = ($_SERVER['HTTP_HOST'] != 'localhost') ? $_SERVER['HTTP_HOST'] : false; 
-
+          
 define( 'COOKIE_DOMAIN', $cookiedomain ); 
-define( 'COOKIE_PATH', '/' ); 
+define( 'COOKIE_PATH', $folde ); 
 define( 'COOKIE_AUTH', 'auth' ); 
 define( 'SECRET_KEY', 'dk;l(-@894!851é|#' ); 
 
@@ -12,7 +17,7 @@ class cookie {
         $expiration = time() + 60*60*24*30; // 30 days to expired
         $cookie = $this->generateCookie( $id, $expiration ); 
 
-        if ( !setcookie( COOKIE_AUTH, $cookie, $expiration, COOKIE_PATH, COOKIE_DOMAIN, false, true ) ) { 
+        if ( !setcookie( COOKIE_AUTH, $cookie, $expiration, COOKIE_PATH, COOKIE_DOMAIN, true, true ) ) { 
          
             throw new AuthException( "Could not set cookie." ); 
          

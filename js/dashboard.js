@@ -1067,16 +1067,8 @@ $(document).ready(function(){
 			e.preventDefault();
 			openqrprint(9,0);
 		});
-
-			var options = {
-				// render method: `'canvas'`, `'image'` or `'div'`
-				render: 'image',
-				fill: '#000',
-				size: 130,
-				text: 'tabluu.com/'+customArray.nicename+'=1',
-			};
-			$(".QRimage").qrcode(options);
-		
+		$(".QRimage").qrcode({render: 'image',fill: '#000',size: 130,text: 'tabluu.com/'+customArray.nicename+'=1'});
+		$(".QRimage2").qrcode({render: 'image',fill: '#000',size: 130,text: 'tabluu.com/'+customArray.nicename+'=0'});
 		function openqrprint(cases,selfie){
 			places = locId.split('|');
 			if(cases == 4)
@@ -1118,7 +1110,7 @@ $(document).ready(function(){
 						j++;
 					if(customArray.city == '')	
 						alertBox('setup incomplete','Go to Setup > Your Tabluu (Business) Page');
-					else if(customArray.fbImg == '')
+					else if(customArray.fbImg == '' && customArray.optsocialpost < 1)
 						alertBox('setup incomplete','Go to Setup > Customers\' Social Media Posts > Default Image for Facebook Posts ');
 					else if(j < 2)
 						alertBox('setup incomplete','Go to Setup > Your Tabluu (Business) Page ');						
@@ -1377,12 +1369,12 @@ $(document).on("pagebeforechange", function (e, data) {
 				$('.text-rate').hide();
 			}
 		});
-		function tagfocus(){isfocus = 1;};	
+		
 		function showtag(){
-				//$('#tagname').focus();
+				setTimeout(function(){$('#tagname').focus();},300);
 				if(rateName.length < 8){
 					isfocus = 1;
-					$.box_Dialog('<input type="text" name="tagname" id="tagname" value="" placeholder="your tag..." /><p>For example, if your question is about service, please use "Service" as your tag.</p>', {'type':'confirm','title': '<span class="color-gold">Add a tag for your question…<span>','center_buttons': true,'show_close_button':false,'overlay_close':false,'buttons':  [{caption: 'submit', callback: function() { 
+					$.box_Dialog('<input type="text" name="tagname" id="tagname" value="" placeholder="your tag..." /><p>For example, if your question is about service, please use "Service" as your tag.</p>', {'type':'confirm','title': '<span class="color-gold">Please add a tag for this question.<span>','center_buttons': true,'show_close_button':false,'overlay_close':false,'buttons':  [{caption: 'submit', callback: function() { 
 							isfocus = 1;
 							if($("#tagname").val() == ''){
 							setTimeout(function() {
@@ -1393,7 +1385,7 @@ $(document).on("pagebeforechange", function (e, data) {
 										'center_buttons': true,
 										'show_close_button':false,
 										'overlay_close':false,
-										'buttons':  [{caption: 'okay',callback:function(){setTimeout(function() {isfocus = 1;showtag();},400);}}]
+										'buttons':  [{caption: 'okay',callback:function(){setTimeout(function() {isfocus = 1;showtag();},300);}}]
 									});
 							}, 300);
 							}else{
@@ -1432,20 +1424,17 @@ $(document).on("pagebeforechange", function (e, data) {
 										isfocus = 1;
 										$.box_Dialog('Please use another tag', {
 											'type':     'question',
-											'title':    '<span class="color-gold">'+tabname+' existed<span>',
+											'title':    '<span class="color-gold">"'+tabname+'" is in use<span>',
 											'center_buttons': true,
 											'show_close_button':false,
 											'overlay_close':false,
-											'buttons':  [{caption: 'okay',callback:function(){setTimeout(function() {isfocus = 1;showtag();},400);}}]
+											'buttons':  [{caption: 'okay',callback:function(){setTimeout(function() {isfocus = 1;showtag();},300);}}]
 										});
 									}, 300);
 								}
 							}
 						}},{caption: 'cancel'}]
 					});	
-					$('#tagname').focus(function(){
-						isfocus = 1;
-					});
 				}else
 					alertBox('maximum questions added','Please delete some questions before adding new ones');	
 		}
