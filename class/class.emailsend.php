@@ -11,24 +11,16 @@ class db{
 	public $aws_access_key_id ="AKIAITTJTNGQSODBXOJQ";
 	public $aws_secret_key = "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";
     public $freever = '';
-	public $istest = false;
 	public $enterprise12 = ''; 
 	public $basicID=3356305; public $proID=3356306; public $proplusID =3356316;
     public $chargifydomain = '';
 	public $dbcon = false;
-	public $path = '';
+	public $path = '';//'../staging/';
    function __construct() {
-		if($istest){
-			$this->freever = 3602345;
-			$this->enterprise12 = 3602787; 
-			$this->chargifydomain = 'tripbull';
-			$this->path = '';
-		}else{
-			$this->freever = 3356308;
-			$this->enterprise12 = 3410620; 
-			$this->chargifydomain = 'tabluu';
-			$this->path = 'app/';
-		}
+		$this->freever = 3356308;
+		$this->enterprise12 = 3410620; 
+		$this->chargifydomain = 'tabluu';
+		$this->path = 'app/';
    }
 	public function db_connect(){ 	
 		if(!$this->dbcon){  

@@ -11,7 +11,7 @@ var counter1 = 0,counter2 = 0,counter3 = 0,counter4 = 0,counter5 = 0,counter6 = 
 var questionDefault = ['How would you rate our staff based on how welcoming and friendly they were towards you?_Service Friendliness','Do you feel that you were provided service in a timely manner?_Service Timeliness','How would you rate the attentiveness of our service?_Service Attentiveness','How would you rate our overall service?_Overall Service','Was this experience worth the amount you paid?_Value for Money','Please rate our location._Location','Please rate our facilities._Facilities','How comfortable was your stay?_Comfort','How would you rate our property in terms of cleanliness?_Cleanliness','How would you rate the overall quality of your meal?_Quality of Meal','How would you rate the overall taste of your meal?_Taste of Meal','Do you feel that there were enough options for you to choose?_Variety','How likely are you to recommend us to your friends and loved ones?_Likelihood to Recommend','How likely are you to visit us again?_Likelihood to Visit Again'];
 //live mode chargify ids
 var everFree = 3356308,basicID=3356305,proID=3356306,enterprise=3356316,basic12 = 3405343,basic24 = 3405344,pro12 = 3405345,pro24 = 3405346,enterprise12 =3410620,enterprise24 =3410619;
-var istest = true,domainpath='',state_Array = ['unpaid','canceled'];
+var istest = false,domainpath='',fbPhotoPathShare='',state_Array = ['unpaid','canceled'];
 
 function alertBox(title,message){
 	clearTimeout(resizeTimeout);
@@ -699,13 +699,13 @@ function loginFb(){
 				var nicename = customArray.nicename;
 				var preview = '';
 				if(customArray.fbpost != ""){
-					preview = String(customArray.fbpost).replace(/<brand>/g,customArray.businessName).replace(/<rating>/,aveRated.toFixed(1)).replace(/<max_rating>/,'5').replace(/<tabluu_url>/,'http://www.tabluu.com/'+customArray.nicename+'.html').replace(/<address>/,address).replace(/<tel>/,customArray.contactNo).replace(/<comment>/,ratecomment);
+					preview = String(customArray.fbpost).replace(/<brand>/g,customArray.businessName).replace(/<rating>/,aveRated.toFixed(1)).replace(/<max_rating>/,'5').replace(/<tabluu_url>/,'https://www.tabluu.com/'+customArray.nicename+'.html').replace(/<address>/,address).replace(/<tel>/,customArray.contactNo).replace(/<comment>/,ratecomment);
 				}else{
 					var defaultstr = '<comment>. <brand> gets a <rating> out of <max_rating> rating from me. <tabluu_url> <address>, <tel>.';
-					preview = String(defaultstr).replace(/<brand>/g,customArray.businessName).replace(/<rating>/,aveRated.toFixed(1)).replace(/<max_rating>/,'5').replace(/<tabluu_url>/,'http://www.tabluu.com/'+customArray.nicename+'.html').replace(/<address>/,address).replace(/<tel>/,customArray.contactNo).replace(/<comment>/,ratecomment);
+					preview = String(defaultstr).replace(/<brand>/g,customArray.businessName).replace(/<rating>/,aveRated.toFixed(1)).replace(/<max_rating>/,'5').replace(/<tabluu_url>/,'https://www.tabluu.com/'+customArray.nicename+'.html').replace(/<address>/,address).replace(/<tel>/,customArray.contactNo).replace(/<comment>/,ratecomment);
 					//preview = 'I rate '+customArray.businessName+' '+aveRated.toFixed(1)+' out of 5. '+	  ratecomment+' Go to: http://www.tabluu.com/'+nicename+'.html - Addr: '+ address +'. Tel: '+customArray.contactNo+'.';
 				}
-				var location = 'http://www.tabluu.com/staging/';
+				var location = fbPhotoPathShare;
 				if(isphototakedone < 0 && takeaphoto > 0){ // take the camera? && check if the photo temporary done uploaded
 					setTimeout(function() {
 						username = response.name;
@@ -828,9 +828,10 @@ $(document).ready(function(){
    
    if(istest == true){
 		domainpath = '';
-		everFree = 3602345,basicID=3361656,basic12 = 3602785,basic24 = 3602788,proID=3361672,pro12 = 3602786,pro24 = 3602789,enterprise=3602346,enterprise12 =3602787,enterprise24 = 3602790; 
+		everFree = 3602345,basicID=3361656,basic12 = 3602785,basic24 = 3602788,proID=3361672,pro12 = 3602786,pro24 = 3602789,enterprise=3602346,enterprise12 =3602787,enterprise24 = 3602790; fbPhotoPathShare= 'https://www.tabluu.com/staging/';
 	}else{
-		domainpath = 'http://www.tabluu.com/';
+		domainpath = 'https://www.tabluu.com/';
+		fbPhotoPathShare= 'https://www.tabluu.com/app/';
 	}
 });
 
@@ -1434,7 +1435,7 @@ function rate_initialize(){
 	if(customArray.logo != '')
 		logo = $.parseJSON(customArray.logo);
 	else
-		logo = $.parseJSON('{"dLogo":"images/desktop_default.png","pLogo":"images/iphone_default.png","logo7":"images/7Ins_default.png","mLogo":"images/mobile_default.png","bLogo":"http://www.tabluu.com/images/desktop_default.png"}');
+		logo = $.parseJSON('{"dLogo":"images/desktop_default.png","pLogo":"images/iphone_default.png","logo7":"images/7Ins_default.png","mLogo":"images/mobile_default.png","bLogo":"https://www.tabluu.com/images/desktop_default.png"}');
 	if(customArray.backgroundImg)
 		bgback = $.parseJSON(customArray.backgroundImg);
 	businessname = decodequote(customArray.businessName);

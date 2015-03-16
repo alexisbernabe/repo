@@ -19,7 +19,7 @@ if(isset($_FILES["filefb"]))
     $UploadDirectory    = 'images/profile/'.$placeId;
 	
 	if (!file_exists($UploadDirectory))
-		mkdir($UploadDirectory);   
+		mkdir($UploadDirectory,0777);   
 
     $File_Name          = strtolower($_FILES['filefb']['name']);
     $File_Ext           = substr($File_Name, strrpos($File_Name, '.')); //get file extention
@@ -47,7 +47,7 @@ if(isset($_FILES["filephoto"]))
 	$placeId = $_REQUEST['photoId'];
     $UploadDirectory    = 'images/shared/'.$placeId;
 	if (!file_exists($UploadDirectory))
-		mkdir($UploadDirectory);   
+		mkdir($UploadDirectory,0777);   
 
     $File_Name          = strtolower($_FILES['filephoto']['name']);
     $File_Ext           = substr($File_Name, strrpos($File_Name, '.')); //get file extention
@@ -74,7 +74,7 @@ if(isset($_FILES["fileselfie"]))
 	$placeId = $_REQUEST['selfieId'];
     $UploadDirectory    = 'images/shared/'.$placeId;
 	if (!file_exists($UploadDirectory))
-		mkdir($UploadDirectory);   
+		mkdir($UploadDirectory,0777);   
 
     $File_Name          = strtolower($_FILES['fileselfie']['name']);
     $File_Ext           = substr($File_Name, strrpos($File_Name, '.')); //get file extention
@@ -97,7 +97,7 @@ if(isset($_FILES["filebackground"]))
 	$placeId = $_REQUEST['placeIdbackground'];
     $UploadDirectory    = 'images/profile/'.$placeId;
 	if (!file_exists($UploadDirectory))
-		mkdir($UploadDirectory);   
+		mkdir($UploadDirectory,0777);   
 
     $File_Name          = strtolower($_FILES['filebackground']['name']);
     $File_Ext           = substr($File_Name, strrpos($File_Name, '.')); //get file extention
@@ -121,7 +121,7 @@ if(isset($_FILES["filelogo"]))
 	$placeId = $_REQUEST['placeIdLogo'];
     $UploadDirectory    = 'images/profile/'.$placeId;
 	if (!file_exists($UploadDirectory))
-		mkdir($UploadDirectory);   
+		mkdir($UploadDirectory,0777);   
 
     $File_Name          = strtolower($_FILES['filelogo']['name']);
     $File_Ext           = substr($File_Name, strrpos($File_Name, '.')); //get file extention
@@ -185,7 +185,7 @@ if(isset($_FILES["fileweb"]))
 	$imgtitle = $_REQUEST['imgtitle'];
     $UploadDirectory    = 'images/profile/'.$placeId;
 	if (!file_exists($UploadDirectory))
-		mkdir($UploadDirectory);
+		mkdir($UploadDirectory,0777);
     
 
     $File_Name          = strtolower($_FILES['fileweb']['name']);

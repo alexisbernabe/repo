@@ -8,7 +8,7 @@ var everFree = 3356308,basicID=3356305,proID=3356306,enterprise=3356316,basic12 
 var com_basicID=26331,com_basic12 = 39047,com_basic24 = 39048,com_proID=26332,com_pro12 = 39050,com_pro24 = 39051,com_enterprise=26333,com_enterprise12 =39053,com_enterprise24 =39054,newentryloc = 0; 
 //compoentprice
 com_basicID_price=9.90,com_basic12_price = 99.00,com_basic24_price = 178.20,com_proID_price=29.90,com_pro12_price = 299.00,com_pro24_price = 538.20,com_enterprise_price=59.90,com_enterprise12_price =599.00,com_enterprise24_price =1078.20;
-var istest=true,domainpath='',pathfolder='';
+var istest=false,domainpath='',pathfolder='';
 var creditsFree=0,creditsBasic = 2000, creditsPro = 5000, creditsEnterprise = 10000,creditsPrise = 6000;
 var newplaceId,profilewizardsetup=0,uicwizardsetup=0,questionwizardsetup=0,emailwizardsetup=0,resizeTimeout;
 var state_Array = ['unpaid','canceled'];
@@ -26,11 +26,11 @@ $(document).ready(function(){
 		//test component chargify ids
 		com_basicID=27367,com_basic12 = 69598,com_basic24 = 69599,com_proID=27368,com_pro12 = 69600,com_pro24 = 69601,com_enterprise=69597,com_enterprise12 =69602,com_enterprise24 =69603;
 		chargifydomain = 'https://tripbull.chargify.com';
-		domainpath = '';pathfolder = 'http://www.tabluu.com/app/';
+		domainpath = '';pathfolder = 'https://www.tabluu.com/app/';
 	}else{
-		domainpath = 'http://www.tabluu.com/';
+		domainpath = 'https://www.tabluu.com/';
 		chargifydomain = 'https://tabluu.chargify.com';
-		pathfolder = 'http://www.tabluu.com/app/';
+		pathfolder = 'https://www.tabluu.com/app/';
 	}
 });
 
@@ -114,7 +114,7 @@ $(document).ready(function(){
     function wizardsetup(){
 		//if(userArray.setup != '') {
 			//var wizardtrack =  $.parseJSON(userArray.setup);
-			//if(wizardtrack.complete == 0){
+			if(userArray.permission < 1){
 				if(locArray.length < 1){
 					if(userArray.timezone == '')
 						wizardAlert(1);
@@ -150,7 +150,7 @@ $(document).ready(function(){
 						wizardforloction();
 				}
 			}
-		//}
+		}
 	}
 	
 	function showLoader(){loader = jQuery('<div id="overlay"> </div>');loader.appendTo(document.body);}
@@ -711,7 +711,7 @@ $(document).ready(function(){
 				hadError(lastId);
 				newplaceId = lastId +'|'+s.subs+'|'+0;
 				newentryloc = 1;
-				window.open('http://www.tabluu.com/blog/tabluu-general/how-do-i-setup-tabluu-2', '_blank');
+				//window.open('http://www.tabluu.com/blog/tabluu-general/how-do-i-setup-tabluu-2', '_blank');
 			}});
 		break;
 		case 'delLoc':
@@ -3659,7 +3659,11 @@ $(document).on('pageshow','#plan', function () {
 	var currPlaceAvail=0,currentPlanprice=0;
 	var height = ($( window ).height() / 16) - 5;
 	$( '.ui-content,.left-content,.right-content').css( {"min-height":height.toFixed() + 'em'} );
-	initiazePlan();	
+
+	if(userArray.permission > 1){
+		alertBox('invalid request','Please contact your administrator(s) for this request.');
+	}else
+		initiazePlan();
    function initiazePlan(){
 		var plan='',txtPlan='';$('#lblExpired').show();$('.ifcancel').show(),$('.addlocation').show();$('.btncancelplan').hide();$('#lblcostLoc').hide();$('#lblTotal').hide();$('#lblperLoc').show();$('.btnreactivate').hide();
 		var state = userArray.state,currentPlan='';
@@ -4169,31 +4173,31 @@ $(document).on('pageshow','#plan', function () {
 		$('.panel-sub-plan').hide();$('.panel-sub-location').hide();$('.panel-activity').hide();
 		if(row == 0){
 			getProductId();
-			$('.panel-sub-plan').show();
+			if(userArray.permission > 1)
+				$('.panel-sub-plan').hide();
+			else
+				$('.panel-sub-plan').show();
 		}else if(row == 1){
-			getTransaction();
-			$('.panel-sub-location').show();	
+			if(userArray.permission > 1)
+				$('.panel-sub-location').hide();
+			else{
+				getTransaction();
+				$('.panel-sub-location').show();
+			}
 		}else if(row == 2){
-			getActivity();
-			$('.panel-activity').show();
+			if(userArray.permission > 1)
+				$('.panel-activity').hide();
+		    else{
+				getActivity();
+				$('.panel-activity').show();
+		    }
 		}	
 		
 	}
 	
    	$( window ).resize(function() { // when window resize
 		var height = ($( window ).height() / 16) - 5;
-		$( '.ui-content,.left-content,.right-content').css( {"min-height":height.toFixed() + 'em'} );		
-		/*if($( window ).width() > 600){
-			$( '.main-wrap .left-content' ).show();
-			$( '.main-wrap .right-content' ).show();		
-			$( '.main-wrap .left-content' ).css( {"max-width":'40%'} );
-			$( '.main-wrap .right-content' ).css( {"max-width":'60%'} );
-		}else{
-			$( '.main-wrap .left-content' ).show();
-			$( '.main-wrap .right-content' ).hide();
-			$( '.main-wrap .left-content' ).css( {"max-width":'100%'} );
-		}	*/
-		//is_resize();
+		$( '.ui-content,.left-content,.right-content').css( {"min-height":height.toFixed() + 'em'} );
 		defaultMenuPlan();
 	});
 });

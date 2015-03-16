@@ -261,7 +261,7 @@ switch($opt){
 		$subject = 'Tabluu.com - user invitation link';
 		$body = 'Hi '.$fname .',
 				<p>You have been invited by '.$row->fname.' '.$row->lname.' to join Tabluu.com as a user/administrator.</p>
-				<p>Please go to: <a href="http://www.tabluu.com">www.tabluu.com</a><br/>
+				<p>Please go to: <a href="https://www.tabluu.com">www.tabluu.com</a><br/>
 				Login using the following details:</p>
 				<p>Username: '. $email .'<br/>Password: ' .$pwd. '</p>
 				<p>You may change the password provided by updating the User Admin section.</p>
@@ -472,10 +472,10 @@ switch($opt){
 				$name = trim($_REQUEST['name']); 
 				//$subject = 'A Tabluu user,'.($name != '' ? ' '.$name.' ' : ' ').'posted a feedback / review of '.$rows->businessName.'!';
 				$subject = 'You\'ve got feedback for '.$rows->businessName.'!';
-				$body = '<p>Login to your Tabluu account and manage your feedback / reviews now!<br/><a href="http://www.tabluu.com">http://www.tabluu.com</a></p><p>Or check your Tabluu page for the latest updates:<br/><a href="http://www.tabluu.com/'.$rows->nicename.'.html">http://www.tabluu.com/'.$rows->nicename.'.html</a></p>'; 
+				$body = '<p>Login to your Tabluu account and manage your feedback / reviews now!<br/><a href="https://www.tabluu.com">https://www.tabluu.com</a></p><p>Or check your Tabluu page for the latest updates:<br/><a href="https://www.tabluu.com/'.$rows->nicename.'.html">https://www.tabluu.com/'.$rows->nicename.'.html</a></p>'; 
 			}else{
 				$subject = 'You have a new follower for '.$rows->businessName.'!';
-				$body = '<p>See what\'s changed at your Customer Advocacy (Tabluu) page:<br/><a href="http://www.tabluu.com/'.$rows->nicename.'.html">http://www.tabluu.com/'.$rows->nicename.'.html</a></p>
+				$body = '<p>See what\'s changed at your Customer Advocacy (Tabluu) page:<br/><a href="https://www.tabluu.com/'.$rows->nicename.'.html">https://www.tabluu.com/'.$rows->nicename.'.html</a></p>
 				<p>Or login to Tabluu.com to manage your reviews.</p>
 				<p>Happy Tabluu-ing!</p>
 				<p>Cheers,<br/>
@@ -510,7 +510,7 @@ switch($opt){
 			case 2:
 				if($_REQUEST['photo_url'] != '')
 					$connect->rotateImages($_REQUEST['photo_url']);
-				$rated1 = $_REQUEST['rated1'];$rated2 = $_REQUEST['rated2'];$rated3 = $_REQUEST['rated3'];$rated4 = $_REQUEST['rated4'];$rated5 = $_REQUEST['rated5'];$rated6 = $_REQUEST['rated6'];$rated7 = $_REQUEST['rated7'];$aveRated = $_REQUEST['aveRate'];$comment = $_REQUEST['comment']; $userName = $_REQUEST['userName'];$userId = $_REQUEST['userId'];$photo_url = (trim($_REQUEST['photo_url']) != '' ? $_REQUEST['photo_url'] : 'http://www.tabluu.com/app/images/desktop_default.png');$id = $_REQUEST['placeId'];$date = date('Y-m-d H:i:s');$email = $_REQUEST['email'];$source = $_REQUEST['source'];$param = $_REQUEST['param'];
+				$rated1 = $_REQUEST['rated1'];$rated2 = $_REQUEST['rated2'];$rated3 = $_REQUEST['rated3'];$rated4 = $_REQUEST['rated4'];$rated5 = $_REQUEST['rated5'];$rated6 = $_REQUEST['rated6'];$rated7 = $_REQUEST['rated7'];$aveRated = $_REQUEST['aveRate'];$comment = $_REQUEST['comment']; $userName = $_REQUEST['userName'];$userId = $_REQUEST['userId'];$photo_url = (trim($_REQUEST['photo_url']) != '' ? $_REQUEST['photo_url'] : 'https://www.tabluu.com/app/images/desktop_default.png');$id = $_REQUEST['placeId'];$date = date('Y-m-d H:i:s');$email = $_REQUEST['email'];$source = $_REQUEST['source'];$param = $_REQUEST['param'];
 				$data = $_REQUEST['data'];$totalFriends = $_REQUEST['totalFriends'];
 				$addnewfield = mysql_query("SHOW COLUMNS FROM `businessplace_$id` LIKE 'feedsource'") or die(mysql_error());
 				$textimg_height = 80;$tranparent = 85;
@@ -564,9 +564,27 @@ switch($opt){
 						$namejpg = rand();
 						$UploadDirectory    = 'images/shared/'.$id.'/';
 						if (!file_exists('images/shared/'.$id))
-							mkdir('images/shared/'.$id);
+							mkdir('images/shared/'.$id, 0777);
 						$profileimage = $UploadDirectory.$namejpg.'.jpg';
-						copy("https://graph.facebook.com/$userId/picture?width=400&height=400", $profileimage);
+						copy("https://graph.facebook.com/$userId/picture?width=400&height=400", 'images/'.$namejpg.'.jpg');	
+/*						
+$headers = get_headers("https://graph.facebook.com/$userId/picture?width=400&height=400",1);
+$url = $headers['Location']; //fb user image URL
+$ch = curl_init( $url );
+$fp = fopen( $profileimage, 'wb');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_BINARYTRANSFER,1);
+curl_setopt($ch, CURLOPT_FILE, $fp);
+curl_setopt($ch, CURLOPT_HEADER, 0);
+curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+curl_setopt($ch, CURLOPT_AUTOREFERER, 1);
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+curl_exec($ch);
+curl_close($ch);
+fclose($fp); */
 						$bresult = mysql_query("SELECT `businessName` FROM `businessList` WHERE `id` = $id");
 						$row = mysql_fetch_object($bresult);
 						$image = new Photos();
